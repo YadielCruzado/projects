@@ -10,7 +10,7 @@ void linkedList::createNode(int num, NodeType *&node ){ //this function creates 
 
     node = new NodeType;
     node -> data = num;
-    node -> next = NULL;
+    node -> link = NULL;
 }
 void linkedList::insertnode(int num) { //create a node at the beginning of the list
     NodeType *node;
@@ -23,7 +23,7 @@ void linkedList::insertnode(int num) { //create a node at the beginning of the l
     }
     else
     {
-        node -> next = head;
+        node -> link = head;
         head = node;
         node = NULL;
         cont++;
@@ -40,9 +40,9 @@ void linkedList::appendNode(int num)  { //create a node at the end of the list
     }
     else
     {
-        tail -> next =  node;
-        tail = tail -> next;
-        node -> next = NULL;
+        tail -> link =  node;
+        tail = tail -> link;
+        node -> link = NULL;
         cont++;
     }
 
@@ -52,8 +52,8 @@ void linkedList::printList() {//this function prints the list on the screen
     location = head;
     if (location != NULL) {
         cout << location -> data << "-> ";
-        while (location -> next != NULL) {
-            location = location -> next;
+        while (location -> link != NULL) {
+            location = location -> link;
             cout << location -> data << "-> ";
         }
         cout << endl;
@@ -77,7 +77,7 @@ void linkedList::searchANumber(int num) {//this function goes through the list l
             if (location -> data == num) {
                 cout << "The number " << num << " it,s in the (" << count + 1 << ") position" << endl;
             }
-            location = location -> next;
+            location = location -> link;
             cont++;
         } while (location != NULL);
 
@@ -99,16 +99,16 @@ void linkedList::deleteANumber(int num) {
         cont--;
     }
     else {
-        while (location -> next != NULL)
+        while (location -> link != NULL)
         {
-            if (location -> next -> data == num)
+            if (location -> link -> data == num)
             {
                 temp = location;
-                location = location->next;
+                location = location->link;
                 temp1 = location;
-                location = location->next;
-                temp1->next = NULL;
-                temp->next = location;
+                location = location->link;
+                temp1 -> link = NULL;
+                temp -> link = location;
                 delete temp1;
                 cont--;
                 return;
@@ -116,11 +116,11 @@ void linkedList::deleteANumber(int num) {
             }
             else
             {
-                location = location->next;
+                location = location->link;
             }
         }
 
-        if(location -> next == NULL)
+        if(location -> link == NULL)
             cout<<"the number is't in the list"<<endl;
     }
 }
@@ -136,13 +136,13 @@ void linkedList::orderList() {
         {
             location = head;
             do {
-                if (location -> data > location -> next -> data) {
-                    swap = location->next->data;
-                    location -> next->data = location -> data;
+                if (location -> data > location -> link -> data) {
+                    swap = location->link->data;
+                    location -> link->data = location -> data;
                     location ->data = swap;
                 }
-                location = location -> next;
-            } while (location -> next != NULL);
+                location = location -> link;
+            } while (location -> link != NULL);
         }
         cout<<"The list has been ordered"<<endl;
     }
@@ -155,18 +155,18 @@ void linkedList::deleteHead() {
         head = NULL;
         cout<<"The list its empty"<<endl;
     }
-    else if(head -> next == NULL)
+    else if(head -> link == NULL)
     {
         head = NULL;
         cont--;
         cout<<"The list its empty"<<endl;
     }
-    else if(head -> next != NULL)
+    else if(head -> link != NULL)
     {
 
         temp = head;
-        head = head -> next;
-        temp -> next = NULL;
+        head = head -> link;
+        temp -> link = NULL;
         delete temp;
         cont--;
     }
@@ -188,12 +188,12 @@ void linkedList::deleteTail() {
     }
     else {
 
-        while (location->next != tail) {
-            location = location->next;
+        while (location->link != tail) {
+            location = location->link;
         }
         temp = tail;
         tail = location;
-        tail -> next = NULL;
+        tail -> link = NULL;
         delete temp;
         cont--;
     }
@@ -208,8 +208,8 @@ void linkedList::reverse() {
     }
     else {
         while (location != NULL) {
-            temp = location -> next;
-            location -> next = temp1;
+            temp = location -> link;
+            location -> link = temp1;
             temp1 = location;
             location = temp;
         }
@@ -237,14 +237,14 @@ void linkedList::insertAtPos(int pos, int num) {//allows you to place a node any
         pos--;
         for(int i = 1; i < pos;i++)
         {
-            location = location -> next;
+            location = location -> link;
         }
         temp = location;
-        temp1 = location -> next;
+        temp1 = location -> link;
         createNode(num,node);
         location = node;
-        location -> next = temp1;
-        temp -> next = location;
+        location -> link = temp1;
+        temp -> link = location;
         cont++;
     }
 

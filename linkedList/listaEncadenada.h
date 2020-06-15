@@ -6,15 +6,14 @@
 #include <cmath>
 using namespace std;
 
+struct NodeType{
+    int data;
+    NodeType *link;
+};
+
 class linkedList {
 
-    struct NodeType{
-        int data;
-        NodeType *next;
-    };
-
 private:
-
     NodeType *head, *tail;
     int cont = 0;
 
@@ -29,7 +28,7 @@ public:
     void orderList();//order the list
     void deleteHead();//delete de first node of the list
     void deleteTail();//delete the las node of the list
-    void reverse();//tis function revert the list
+    void reverse();//this function revert the list
     void insertAtPos(int,int);//insert a node in a given position
     void showMenu();//Show the menu
 };
