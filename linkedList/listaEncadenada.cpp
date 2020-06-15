@@ -1,7 +1,3 @@
-//
-// Created by yadie on 5/31/2020.
-//
-
 #include "listaEncadenada.h"
 
 linkedList::linkedList() {//this is the constructor of the class
@@ -253,7 +249,7 @@ void linkedList::insertAtPos(int pos, int num) {//allows you to place a node any
     }
 
 }
-void linkedList::showMenu() { //this funcion show the manu
+void linkedList::showMenu() { //this function show the menu
 
 
     int num = 0,opcion = 0;
@@ -269,16 +265,16 @@ void linkedList::showMenu() { //this funcion show the manu
                "8. if you want to delete the tail\n"
                "9. if you want to reverse the list\n"
                "10. if you want to insert a number at a position\n"
-               "11. if yu whant to know the size if the list\n"
+               "11. if you want to know the size if the list\n"
                "12. exit\n"
-               "Entre su opcion ";
+               "Enter an option ";
         cin>>opcion;
         cout<<"\n";
         while(cin.fail())
         {
             cin.clear();
             cin.ignore(100,'\n');
-            cout << "Enter a valid opcion" << endl;
+            cout << "Enter a valid option" << endl;
             cin>>opcion;
         }
         switch(opcion) {
